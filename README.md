@@ -174,7 +174,7 @@ while true; do curl -s -o /dev/null -w "%{http_code}" "http://${LB_IP}/"; sleep 
 
 Итоговый вывод outputs.tf
 
-![4](img/4png)
+![4](img/4.png)
 
 
 4. (дополнительно)* Создать Application Load Balancer с использованием Instance group и проверкой состояния.

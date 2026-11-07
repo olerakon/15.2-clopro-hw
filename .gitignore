@@ -1,0 +1,12 @@
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+crash.log
+crash.*.log
+terraform/terraform.tfvars
+terraform/*.auto.tfvars
+authorized_key*.json
+*.pem
+*.key
+.DS_Store

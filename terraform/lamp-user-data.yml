@@ -1,0 +1,22 @@
+#cloud-config
+packages:
+  - apache2
+  - php
+  - php-mysql
+  - libapache2-mod-php
+
+write_files:
+  - path: /var/www/html/index.php
+    permissions: '0644'
+    content: |
+      <?php
+      echo "<h1>LAMP Instance Group - 15.2</h1>";
+      echo "<h2>lamp-{instance.index}</h2>";
+      echo "<p>Hostname: " . gethostname() . "</p>";
+      echo "<p><img src='https://storage.yandexcloud.net/${bucket_name}/${image_object_key}' alt='Homework image' width='600'></p>";
+      ?>
+
+runcmd:
+  - rm -f /var/www/html/index.html
+  - systemctl enable apache2
+  - systemctl restart apache2

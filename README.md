@@ -76,6 +76,8 @@ IP адресс машины 192.168.140.145
         └── image.jpg               # Просто пингвин
 ```
 
+---
+
 1. Создал бакет Object Storage и разместил в нём файл с картинкой.
 
 [storage.tf](terraform/storage.tf)
@@ -90,7 +92,9 @@ IP адресс машины 192.168.140.145
 
 ![1](img/1.png)
 
-![1](img/1.1.png)
+![1.1](img/1.1.png)
+
+---
 
 2. Создал [группу ВМ](terraform/instance_group.tf) в [public](terraform/network.tf) подсети фиксированного размера с [шаблоном LAMP и веб-страницей, содержащей ссылку на картинку из бакета](terraform/lamp-user-data.yml)
 
@@ -122,11 +126,13 @@ IP адресс машины 192.168.140.145
 - включает и перезапускает Apache;
 - подставляет имя VM `lamp-{instance.index}` и ссылку на картинку из Object Storage.
 
-[2](img/2.png)
+![2](img/2.png)
 
-[2.1](img/2.1.png)
+![2.1](img/2.1.png)
 
-[2.2](img/2.2.png)
+![2.2](img/2.2.png)
+
+---
 
 3. Создал и подключил группу к [сетевому балансировщику](terraform/load_balancer.tf)
 
@@ -144,29 +150,31 @@ LB_IP=$(terraform output -raw load_balancer_ip)
 while true; do curl -s -o /dev/null -w "%{http_code}" "http://${LB_IP}/"; sleep 2; done
 ```
 
-[3](img/3.png)
+![3](img/3.png)
 
-[3.1](img/3.1.png)
+![3.1](img/3.1.png)
 
-[3.2](img/3.2.png)
+![3.2](img/3.2.png)
 
-[3.3](img/3.3.png)
+![3.3](img/3.3.png)
 
-[3.4](img/3.4.png)
+![3.4](img/3.4.png)
 
-[3.5](img/3.5.png)
+![3.5](img/3.5.png)
 
-[3.6](img/3.6.png)
+![3.6](img/3.6.png)
 
-[3.7](img/3.7.png)
+![3.7](img/3.7.png)
 
-[3.8](img/3.8.png)
+![3.8](img/3.8.png)
 
-[3.9](img/3.9.png)
+![3.9](img/3.9.png)
+
+---
 
 Итоговый вывод outputs.tf
 
-[4](img/4png)
+![4](img/4png)
 
 
 4. (дополнительно)* Создать Application Load Balancer с использованием Instance group и проверкой состояния.
